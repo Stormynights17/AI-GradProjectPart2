@@ -1,5 +1,8 @@
 # This code is from Geeks For Geeks: https://www.geeksforgeeks.org/sudoku-backtracking-7/
+import sys
+import time
 
+start_time = time.time()
 
 # N is the size of the 2D matrix N*N
 N = 9
@@ -100,19 +103,56 @@ def solveSudoku(grid, row, col):
 # Driver Code
 
 # 0 means unassigned cells
-grid = [[3, 0, 6, 5, 0, 8, 4, 0, 0],
-		[5, 2, 0, 0, 0, 0, 0, 0, 0],
-		[0, 8, 7, 0, 0, 0, 0, 3, 1],
-		[0, 0, 3, 0, 1, 0, 0, 8, 0],
-		[9, 0, 0, 8, 6, 3, 0, 0, 5],
-		[0, 5, 0, 0, 9, 0, 6, 0, 0],
-		[1, 3, 0, 0, 0, 0, 2, 5, 0],
-		[0, 0, 0, 0, 0, 0, 0, 7, 4],
-		[0, 0, 5, 2, 0, 6, 3, 0, 0]]
+easy = 	   [[0,7,0,0,2,0,0,4,6],
+			[0,6,0,0,0,0,8,9,0],
+			[2,0,0,8,0,0,7,1,5],
+			[0,8,4,0,9,7,0,0,0],
+			[7,1,0,0,0,0,0,5,9],
+			[0,0,0,1,3,0,4,8,0],
+			[6,9,7,0,0,2,0,0,8],
+			[0,5,8,0,0,0,0,6,0],
+			[4,3,0,0,8,0,0,7,0]]
 
-if (solveSudoku(grid, 0, 0)):
-	printing(grid)
+medium =   [[5,0,7,2,0,0,0,9,0],
+			[0,0,6,0,3,0,7,0,1],
+			[4,0,0,0,0,0,0,6,0],
+			[1,0,0,4,9,0,0,0,7],
+			[0,0,0,5,0,8,0,0,0],
+			[8,0,0,0,2,7,0,0,5],
+			[0,7,0,0,0,0,0,0,9],
+			[2,0,9,0,8,0,6,0,0],
+			[0,4,0,0,0,9,3,0,8]]
+
+hard = 	   [[0,0,6,5,0,0,0,0,8],
+			[0,9,5,0,0,0,0,2,0],
+			[7,0,0,9,0,0,3,0,0],
+			[0,0,0,0,4,0,2,7,0],
+			[0,0,0,8,7,3,0,0,0],
+			[0,7,9,0,5,0,0,0,0],
+			[0,0,2,0,0,8,0,0,9],
+			[0,5,0,0,0,0,8,1,0],
+			[3,0,0,0,0,5,4,0,0]]
+if str(sys.argv[1]) == "easy":
+	if (solveSudoku(easy, 0, 0)):
+		printing(easy,)
+		end_time = time.time()
+		print(str(1000*(end_time - start_time)) + " ms")
+	else:
+		print("no solution exists ")
+elif str(sys.argv[1]) == "medium":
+	if (solveSudoku(medium, 0, 0)):
+		printing(medium)
+		end_time = time.time()
+		print(str(1000*(end_time - start_time)) + " ms")
+	else:
+		print("no solution exists ")
+elif str(sys.argv[1]) == "hard":
+	if (solveSudoku(hard, 0, 0)):
+		printing(hard)
+		end_time = time.time()
+		print(str(1000*(end_time - start_time)) + " ms")
+	else:
+		print("no solution exists ")
 else:
-	print("no solution exists ")
-
+		print("you entered: " + str(sys.argv[1]))
 	# This code is contributed by sudhanshgupta2019a
